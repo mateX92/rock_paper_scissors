@@ -2,21 +2,62 @@
     <head>
         <title>Rock Paper Scissors!</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css"> 
+        
     </head>
     <body>
-        <h1>ROCK, PAPER, SCISSORS</h1>
+
+    <section>
 
         <div id="choices">
-            <p>WHO CHOSE WHO?</p>
+            <p>Choose <span>Your</span> Shape!</p>
         </div>
 
-        <button class="btn" id="rock">Rock</button>
-        <button class="btn" id="paper">Paper</button>
-        <button class="btn" id="scissors">Scissors</button>
+        <div id="players">
+            <div class="game_div" id="player_div">
+              
+                <div id="buttons">
+                    <div class='trianglebutton'>
+                        <button class="btn" id="rock">rock</button>
+                        <img src="img/triangle.png" id="trianglerock">
+                    </div>
+                    <div class='trianglebutton'>
+                        <button class="btn" id="paper">paper</button>
+                        <img src="img/triangle.png" id="trianglepaper">
+                    </div>
+                    <div class='trianglebutton'>
+                        <button class="btn" id="scissors">scissors</button>
+                        <img src="img/triangle.png" id="trianglescissors">
+                    </div>
+                </div>
+               
 
-        <div id="results"></div>
+                <div>
+                    <img src="img/paper.png" alt="Player's choice" id="playericon" class="icon">
+                </div>
+
+                <div class="currentresult">
+                    <h1>PLAYER</h1>
+                    <div class="results" id="result_player"></div>
+                </div>
+            </div>
+
+            <div class="game_div" id="computer_div">
+                <div id="computer_div_content">
+                    <img src="img/paper - Copy.png" alt="Computer's choice" id="comptuericon" class="icon">
+
+                    <div class="currentresult">
+                        <div class="results" id="result_computer"></div>
+                        <h1>COMPUTER</h1>
+                    </div>
+                </div>
+             
+
+            </div>
+         </div>
         
         <script src="functions.js"></script>
+    </section>
     </body>
 
 </html>

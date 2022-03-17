@@ -7,53 +7,65 @@ let computerSelection;
 let playerScore = 0; //sets initial score of each player
 let computerScore = 0;
 
-const buttons = document.querySelectorAll('button');
+const choiceComp = document.getElementById('comptuericon');
+const choicePlayer = document.getElementById('playericon');
+const buttons = document.querySelectorAll('.btn');
     
 buttons.forEach((button) => {
     button.addEventListener('click', function(e) {       
         computerSelection = computerPlay();
+            if(computerSelection === "rock") {
+                choiceComp.src = 'img/unnamed.png';
+            } else if (computerSelection === "scissors") {
+                choiceComp.src = 'img/scissors - Copy.png'
+            } else { choiceComp.src = 'img/paper - Copy.png'}
         playerSelection = e.target.id;
+            if(playerSelection === "rock") {
+                choicePlayer.src = 'img/unnamed2.png';
+            } else if (playerSelection === "scissors") {
+                choicePlayer.src = 'img/scissors.png'
+            } else { choicePlayer.src = 'img/paper.png'}
         playRound(playerSelection, computerSelection); 
         game();
     });
 }); 
+
+// changes IMG for PLAYER
+
+//const choicePlayer = document.getElementById('playericon'); // tworzy nowego DIV
+
+//let btnR = document.querySelector('#rock');
+//let btnP = document.querySelector('#paper');
+//let btnS = document.querySelector('#scissors');
+
+//btnR.addEventListener('click', () => {
+ //   choicePlayer.src = 'img/unnamed2.png';
+//})
+//btnP.addEventListener('click', () => {
+ //   choicePlayer.src = 'img/paper.png';
+//})
+//btnS.addEventListener('click', () => {
+ //   choicePlayer.src = 'img/scissors.png';
+//})
+
 
 
  // RESULTS // CHOICES
 
  const choices = document.querySelector('#choices'); // zaznacza mojego DIV
 
- const choicePlayer = document.createElement('div'); // tworzy nowego DIV
- choicePlayer.textContent = 'The Player chose: ';
+ const resultPlayer = document.querySelector('#result_player'); // zaznacza mojego DIV
 
- const choiceComp = document.createElement('div');
- choiceComp.textContent = 'The Computer chose: ';
+ resultPlayer.textContent = `0/5`;
 
- choices.appendChild(choicePlayer);
- choices.appendChild(choiceComp);
+ const resultComputer = document.querySelector('#result_computer'); // i kolejnego
 
- const results = document.querySelector('#results'); // zaznacza mojego DIV
+ resultComputer.textContent = `0/5`;
 
- const resultPlayer = document.createElement('div'); // tworzy nowego DIV
- //resultPlayer.classList.add('result_each'); // nadaje klase (zeby miec 1 div na kazdego gracza)
- resultPlayer.textContent = "The Player Score is: " + `0`;
-
- const resultComputer = document.createElement('div'); // i kolejnego
- //resultComputer.classList.add('result_each'); // i znow...
- resultComputer.textContent = "The Computer Score is: " + `0`;
-
- const resultRound = document.createElement('div'); // tworzy DIV gdzie bedzie tekst kto dostal punkt
- //resultRound.textContent = "";
+ const resultRound = document.querySelector('p');
 
  const finalResult = document.createElement('div');
  //finalResult.textContent = "";
-
-
-
- results.appendChild(resultPlayer);
- results.appendChild(resultComputer);
- results.appendChild(resultRound);
- results.appendChild(finalResult);
 
 
 // computerPlay to randomly return ROCK, PAPER or SCISSORS
@@ -79,21 +91,16 @@ function playRound(playerSelection, computerSelection) { //determines which conf
 
     if ((playerSelection === "rock" && computerSelection === "paper") || (playerSelection === "scissors" && computerSelection === "rock") || (playerSelection === "paper" && computerSelection === "scissors")) {
         computerScore = computerScore + 1;
-        choiceComp.textContent = 'The Computer chose: ' + `${computerSelection}`;
-        choicePlayer.textContent = 'The Player chose: ' + `${playerSelection}`;
-        resultComputer.textContent = "The Computer Score is: " + `${computerScore}`;
-        resultRound.textContent = `Sorry buddy, the ${playerSelection} LOOSES with the ${computerSelection}`;
+        resultComputer.textContent = `${computerScore}/5`;
+        resultRound.textContent = `Sorry, the ${playerSelection} LOOSES with the ${computerSelection}`;
     } else if (playerSelection === computerSelection) {
-        choiceComp.textContent = 'The Computer chose: ' + `${computerSelection}`;
-        choicePlayer.textContent = 'The Player chose: ' + `${playerSelection}`;
         resultRound.textContent = `It's a TIE, the ${playerSelection} is the same as the ${computerSelection}`;
     } else {
-        choiceComp.textContent = 'The Computer chose: ' + `${computerSelection}`;
-        choicePlayer.textContent = 'The Player chose: ' + `${playerSelection}`;
         playerScore = playerScore + 1;
-        resultPlayer.textContent = "The Player Score is: " + `${playerScore}`;
-        resultRound.textContent = `Awesome! The ${playerSelection} WINS over the ${computerSelection}!`;
+        resultPlayer.textContent = `${playerScore}/5`;
+        resultRound.textContent = `Yea! The ${playerSelection} WINS over the ${computerSelection}!`;
     };
+
 };
 
 
@@ -103,9 +110,25 @@ function playRound(playerSelection, computerSelection) { //determines which conf
     function game() {
 
                 if (playerScore == 5) {
-                    alert("You got 5 points, so you WIN!!!");
+                    resultRound.textContent = "You got 5 points, so you WIN!!!";
+                    resultRound.style.color = '#509660';
                 } else if (computerScore == 5) {
-                    alert("Unfortunately, the Computer won with 5 points...");
+                    resultRound.textContent = "Unfortunately, the Computer won with 5 points...";
+                    resultRound.style.color = '#9c625f';
                 };
 
     };
+
+    function finishGame() {
+        if (playerScore >= 5 && computerScore <= 5 || computerScore >= 5 && playerScore <= 5 || playerScore > 5 || computerScore > 5) {
+            alert ('The game has finished.');
+            computerScore = 0;
+            playerScore = 0;
+            resultComputer.textContent = `0/5`;
+            resultPlayer.textContent = `0/5`;
+            resultRound.textContent = "Choose Your Shape!"
+            resultRound.style.color = '#363636';
+        };
+    }
+
+    document.addEventListener ('click', finishGame);
