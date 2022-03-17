@@ -177,3 +177,25 @@ h1 {
     color: #9c625f;
     padding-top: 0px;
 }
+
+/* Smartphone */
+
+@media only screen and (max-device-width: 650px) and (max-device-height: 1000px) {
+
+    #choices p{
+        font-size: 2.5em;
+    }
+
+    #players{
+    background-color: blue;
+}
+
+#player_div {
+    max-width: 500px;
+    padding-right: 0px;
+}
+
+#computer_div {
+    max-width: 500px;
+
+}
