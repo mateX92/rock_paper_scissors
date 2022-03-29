@@ -183,13 +183,14 @@ h1 {
 
 @media only screen and (max-device-width: 650px) and (max-device-height: 1000px) {
 
-    #choices {
-        max-width: 90%;
-    }
+#choices {
+    max-width: 90%;
+    height: 15vh;
+}
 
-    #choices p{
-        font-size: 2.5em;
-    }
+#choices p{
+    font-size: 2em;
+}
 
     #players{
 }
@@ -197,9 +198,22 @@ h1 {
 #player_div {
     max-width: 90%;
     padding-right: 0px;
+    height: 35vh;
 }
 
 #computer_div {
     max-width: 90%;
+    height: 35vh;
+}
 
+#buttons{
+    padding-top: 0px;
+}
+
+.icon{
+    max-width: 30%;
+}
+
+#playericon{
+    margin-bottom: 20px;
 }
