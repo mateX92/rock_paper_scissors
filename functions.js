@@ -16,39 +16,29 @@ buttons.forEach((button) => {
         computerSelection = computerPlay();
             if(computerSelection === "rock") {
                 choiceComp.src = 'img/unnamed.png';
+                choiceComp.style.opacity = "1";
             } else if (computerSelection === "scissors") {
-                choiceComp.src = 'img/scissors - Copy.png'
-            } else { choiceComp.src = 'img/paper - Copy.png'}
+                choiceComp.src = 'img/scissors - Copy.png';
+                choiceComp.style.opacity = "1";
+            } else { 
+                choiceComp.src = 'img/paper - Copy.png';
+                choiceComp.style.opacity = "1";
+            }
         playerSelection = e.target.id;
             if(playerSelection === "rock") {
                 choicePlayer.src = 'img/unnamed2.png';
+                choicePlayer.style.opacity = "1";
             } else if (playerSelection === "scissors") {
-                choicePlayer.src = 'img/scissors.png'
-            } else { choicePlayer.src = 'img/paper.png'}
+                choicePlayer.src = 'img/scissors.png';
+                choicePlayer.style.opacity = "1";
+            } else { 
+                choicePlayer.src = 'img/paper.png';
+                choicePlayer.style.opacity = "1";
+        }
         playRound(playerSelection, computerSelection); 
         game();
     });
 }); 
-
-// changes IMG for PLAYER
-
-//const choicePlayer = document.getElementById('playericon'); // tworzy nowego DIV
-
-//let btnR = document.querySelector('#rock');
-//let btnP = document.querySelector('#paper');
-//let btnS = document.querySelector('#scissors');
-
-//btnR.addEventListener('click', () => {
- //   choicePlayer.src = 'img/unnamed2.png';
-//})
-//btnP.addEventListener('click', () => {
- //   choicePlayer.src = 'img/paper.png';
-//})
-//btnS.addEventListener('click', () => {
- //   choicePlayer.src = 'img/scissors.png';
-//})
-
-
 
  // RESULTS // CHOICES
 
@@ -121,7 +111,10 @@ function playRound(playerSelection, computerSelection) { //determines which conf
 
     function finishGame() {
         if (playerScore >= 5 && computerScore <= 5 || computerScore >= 5 && playerScore <= 5 || playerScore > 5 || computerScore > 5) {
-            alert ('The game has finished.');
+          //  alert ('The game has finished.');
+          if (playerScore > computerScore) {
+            alert('You won! Now the game will restart.');
+            } else { alert('You lost... Now the game will restart.') };
             computerScore = 0;
             playerScore = 0;
             resultComputer.textContent = `0/5`;
@@ -129,6 +122,6 @@ function playRound(playerSelection, computerSelection) { //determines which conf
             resultRound.textContent = "Choose Your Shape!"
             resultRound.style.color = '#363636';
         };
-    }
+    };
 
     document.addEventListener ('click', finishGame);

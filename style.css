@@ -143,6 +143,7 @@ section{
 .icon{
     max-width: 45%;
     margin: 50px;
+    opacity: 30%;
 }
 
 .currentresult{
@@ -182,6 +183,10 @@ h1 {
 
 @media only screen and (max-device-width: 650px) and (max-device-height: 1000px) {
 
+    #choices {
+        max-width: 90%;
+    }
+
     #choices p{
         font-size: 2.5em;
     }
@@ -190,11 +195,11 @@ h1 {
 }
 
 #player_div {
-    max-width: 500px;
+    max-width: 90%;
     padding-right: 0px;
 }
 
 #computer_div {
-    max-width: 500px;
+    max-width: 90%;
 
 }
